@@ -101,6 +101,7 @@ O orçamento estipulado para a **Camada de Aplicação** era de US$ 0.50/hora.
 ```text
 .
 ├── readme.md                # Este relatório
+├── relatorio_tecnico.pdf    # Versão PDF oficial para entrega
 ├── arena/
 │   ├── deploy_app.sh           # Script de deploy da infraestrutura
 │   ├── deploy_generator.sh     # Script de deploy do gerador de carga
