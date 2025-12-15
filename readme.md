@@ -32,7 +32,7 @@ A infraestrutura final que sustentou a carga máxima foi composta por:
 * **Servidor Web:** Apache 2.4 com PHP 7.2.
 * **Banco de Dados:** MariaDB 10.2.
 
-### 🔧 Detalhes do Tuning (O "Pulo do Gato")
+### 🔧 Detalhes do Tuning
 
 Para atingir a performance final, aplicamos as seguintes otimizações críticas via scripts de `user_data`:
 
@@ -100,16 +100,25 @@ O orçamento estipulado para a **Camada de Aplicação** era de US$ 0.50/hora.
 
 ```text
 .
-├── README.md                # Este relatório
-├── relatorio_tecnico.pdf    # Versão PDF oficial para entrega
-├── codigo/
-│   ├── user_data_template.sh   # Script de provisionamento (contém o tuning)
+├── readme.md                # Este relatório
+├── arena/
+│   ├── deploy_app.sh           # Script de deploy da infraestrutura
+│   ├── deploy_generator.sh     # Script de deploy do gerador de carga
+│   ├── lab-arena.yaml          # Configuração do ambiente de testes
 │   ├── run_remote_test.sh      # Script de execução do Locust
-│   └── deploy_app.sh           # Script de deploy da infraestrutura
+│   ├── teardown.sh             # Script de destruição da infraestrutura
+│   ├── user_data_template.sh   # Script de provisionamento (template)
+│   ├── user_data_final.sh      # Script de provisionamento final (contém o tuning)
+│   └── user_data_locust.sh     # Script de provisionamento do Locust
+├── src/
+│   └── chart.py                # Script Python para geração de gráficos
 ├── resultados/
-│   ├── teste_150_users/        # Logs brutos (CSV) do cenário vencedor
-│   └── dados_stats_history.csv # Histórico consolidado
+│   ├── resultados_100users_2m_20251213_173448/
+│   ├── resultados_100users_2m_20251215_173338/
+│   ├── resultados_150users_2m_20251215_174322/  # Logs brutos (CSV) do cenário vencedor
+│   ├── resultados_180users_2m_20251215_175104/
+│   ├── resultados_200users_2m_20251215_174658/
+│   └── resultados_300users_2m_20251215_081934/
 └── graficos/
     ├── grafico_rps.png
-    ├── grafico_latencia.png
-    └── print_sucesso.png       # Print do terminal ao final do teste
+    └── grafico_latencia.png
